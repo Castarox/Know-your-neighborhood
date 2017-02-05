@@ -88,8 +88,12 @@ class Cities():
         search_result = []
         for item in Cities.city_list:
             if user_input in item.name:
-                search_result.append(item)
-        return search_result
+                row = [item.name, item.type]
+                search_result.append(row)
+        if search_result:
+            return search_result
+        else:
+            return False
 
     def __str__(self):
-        return self.type + ' ' + self.name
+        return self.name

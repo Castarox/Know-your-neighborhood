@@ -1,5 +1,4 @@
 class Ui:
-
     @staticmethod
     def get_input(title):
         user_input = input('{}'.format(title))
@@ -28,11 +27,6 @@ class Ui:
             else:
                 print('-' * (table_lenght + len(table[0]) + 1))
 
-
-
-
-
-
     @staticmethod
     def count_table_size(table):
         cell_size = []
@@ -45,6 +39,14 @@ class Ui:
                     cell_size[j] = len(str(item[j]))
 
         for k in range(len(cell_size)):
-            cell_size[k] += 2
-
+            cell_size[k] += 4
         return cell_size
+
+    @staticmethod
+    def print_text(text):
+        print(text)
+
+    @staticmethod
+    def print_menu(menu):
+        for idx in range(len(menu)):
+            print('\t({}). {}'.format(idx + 1, menu[idx]))
