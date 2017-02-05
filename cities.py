@@ -27,3 +27,36 @@ class Cities():
             for row in reader:
                 new_table.append(row)
         return new_table
+
+    @classmethod
+    def count_statistic(cls):
+        statistic = [['województwo', 0], ['powiat', 0], ['gmina miejska', 0], ['gmina wiejska', 0],
+                     ['gmina miejsko-wiejska', 0], ['obszar wiejski', 0], ['miasto', 0],
+                     ['miasto na prawach powiatu', 0], ['delegatura', 0]]
+        for item in cls.city_list:
+            statistic = Cities.change_statistic_value(item, statistic)
+        return statistic
+
+
+    @staticmethod
+    def change_statistic_value(object_to_check, statistic_list):
+        for item in statistic_list:
+            if object_to_check.type == item[0]:
+                item[1] += 1
+        return statistic_list
+
+    @classmethod
+    def get_name_list(cls):
+        name_list = []
+        for item in cls.city_list:
+            name_list.append(item.name)
+        return  name_list
+
+    @staticmethod
+    def get_longest_words(words_list, amount = 3):
+        words.list.sort(key = len, reverse = True)
+        print(words_list[:amount])
+
+
+    def __str__(self):
+        return self.type + ' ' + self.name
