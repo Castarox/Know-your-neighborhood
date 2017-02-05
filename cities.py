@@ -26,7 +26,7 @@ class Cities():
             reader = csv.reader(f, delimiter='\t')
             for row in reader:
                 new_table.append(row)
-        return new_table
+        return new_table[1:]
 
     @classmethod
     def count_statistic(cls):
@@ -54,9 +54,42 @@ class Cities():
 
     @staticmethod
     def get_longest_words(words_list, amount = 3):
-        words.list.sort(key = len, reverse = True)
-        print(words_list[:amount])
+        words_list.sort(key = len, reverse = True)
+        return words_list[:amount]
 
+
+    @classmethod
+    def get_largest_county(cls):
+        county_number = ''
+        community_number = 0
+        for item in Cities.city_list:
+            if item.community:
+                if int(item.community) > community_number:
+                    community_number = int(item.community)
+                    county_number = item.county
+        for item in Cities.city_list:
+            if county_number == item.county and item.type == 'powiat':
+                return item
+
+    @classmethod
+    def get_multi_types_objects(cls):
+        cities = []
+        multi_types = []
+        for item in Cities.city_list:
+            if item.name in cities:
+                if item.name not in multi_types:
+                    multi_types.append(item.name)
+            else:
+                cities.append(item.name)
+        return multi_types
+
+    @classmethod
+    def search(cls, user_input):
+        search_result = []
+        for item in Cities.city_list:
+            if user_input in item.name:
+                search_result.append(item)
+        return search_result
 
     def __str__(self):
         return self.type + ' ' + self.name
