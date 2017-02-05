@@ -6,6 +6,10 @@ class Menu:
 
     @staticmethod
     def run():
+        """
+        Run main program
+        :return: None
+        """
         Cities.create_by_csv()
         while True:
             os.system('clear')
@@ -19,6 +23,10 @@ class Menu:
 
     @staticmethod
     def choose_option():
+        """
+        Check what user wanna to do in program
+        :return: None
+        """
         user_choice = Ui.get_input('\nWhich option:')
         if user_choice == '1':
             os.system('clear')

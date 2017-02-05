@@ -1,16 +1,26 @@
 class Ui:
     @staticmethod
     def get_input(title):
+        """
+        get input from user
+        :param title: text to display in input
+        :return: user input
+        """
         user_input = input('{}'.format(title))
         return user_input
 
     @staticmethod
     def print_table(table, Head = None):
+        """
+        print table
+        :param table: table to print
+        :param Head: Header for table
+        :return: none
+        """
         cell_size = Ui.count_table_size(table)
         table_lenght = 0
         for item in cell_size:
             table_lenght += item
-        print(table_lenght)
         print('/' + '-' * (table_lenght + len(table[0]) - 1) + '\\')
         if Head:
             print('|{:^{}}|'.format(Head, table_lenght + 1))
@@ -29,6 +39,11 @@ class Ui:
 
     @staticmethod
     def count_table_size(table):
+        """
+        Count cell size for table
+        :param table: table to print
+        :return: list with cell size
+        """
         cell_size = []
         for i in range(len(table[0])):
             cell_size.append(len(str(table[0][i])))
@@ -44,9 +59,19 @@ class Ui:
 
     @staticmethod
     def print_text(text):
+        """
+        Print text
+        :param text: text to print
+        :return: None
+        """
         print(text)
 
     @staticmethod
     def print_menu(menu):
+        """
+        Print menu
+        :param menu: List with labels for menu
+        :return: None
+        """
         for idx in range(len(menu)):
             print('\t({}). {}'.format(idx + 1, menu[idx]))
